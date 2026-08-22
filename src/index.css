@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+/*
+  Self-hosted fonts (Latin subset only, from @fontsource) so the site
+  never depends on a runtime call to Google Fonts. Files live in
+  src/assets/fonts/ and are bundled + hashed by Vite like any other asset.
+*/
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./assets/fonts/plus-jakarta-sans-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("./assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./assets/fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2");
+}
+
+@theme {
+  --color-paper: #f6f5f1;
+  --color-surface: #ffffff;
+  --color-ink: #10161c;
+  --color-ink-soft: #1b232b;
+  --color-slate: #5b6470;
+  --color-slate-200: #dfe2e2;
+  --color-slate-800: #2b333b;
+  --color-signal: #0f7a6b;
+  --color-signal-dim: #0c5f54;
+  --color-signal-tint: #e4f0ed;
+
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-card: 14px;
+  --radius-chip: 999px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-signal);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.container-page {
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container-page {
+    padding-inline: 2rem;
+  }
+}
+
+.section-pad {
+  padding-block: 5rem;
+}
+
+@media (min-width: 1024px) {
+  .section-pad {
+    padding-block: 7rem;
+  }
+}
+
+.chip-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}

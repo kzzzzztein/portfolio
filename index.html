@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Kyle Santos — Web Developer & Digital Solutions Builder</title>
+    <meta
+      name="description"
+      content="Kyle Santos builds modern business websites, booking platforms, management systems, educational platforms, and custom web applications."
+    />
+    <meta name="theme-color" content="#10161c" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Kyle Santos — Web Developer & Digital Solutions Builder" />
+    <meta
+      property="og:description"
+      content="Kyle Santos builds modern business websites, booking platforms, management systems, educational platforms, and custom web applications."
+    />
+    <!-- TODO: after deploying, replace with the full absolute URL, e.g.
+         https://USERNAME.github.io/portfolio/og-image.png -->
+    <meta property="og:image" content="/og-image.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kyle Santos — Web Developer & Digital Solutions Builder" />
+    <meta
+      name="twitter:description"
+      content="Kyle Santos builds modern business websites, booking platforms, management systems, educational platforms, and custom web applications."
+    />
+
+    <!--
+      GitHub Pages SPA redirect handling.
+      GitHub Pages has no server-side rewrites, so a hard refresh on a route
+      like /portfolio/projects/resort-booking-platform normally 404s. The
+      matching script in public/404.html encodes the requested path into a
+      query string and redirects to this file; this script decodes it and
+      restores the real URL via history.replaceState before React Router
+      mounts. Source pattern: https://github.com/rafgraph/spa-github-pages
+    -->
+    <script>
+      (function (l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search
+            .slice(1)
+            .split('&')
+            .map(function (s) {
+              return s.replace(/~and~/g, '&')
+            })
+            .join('?')
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash)
+        }
+      })(window.location)
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
