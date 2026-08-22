@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from 'lucide-react'
+import { Facebook, Linkedin, Mail } from 'lucide-react'
 import { CONTACT } from '../data/contact'
 
 export default function Footer() {
@@ -21,13 +21,13 @@ export default function Footer() {
             LinkedIn
           </a>
           <a
-            href={CONTACT.github}
+            href={CONTACT.facebook}
             target="_blank"
             rel="noreferrer noopener"
             className="inline-flex items-center gap-2 text-slate-300 transition-colors hover:text-paper"
           >
-            <Github className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
-            GitHub
+            <Facebook className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
+            Facebook
           </a>
           <a
             href={`mailto:${CONTACT.email}`}

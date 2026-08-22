@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Github } from 'lucide-react'
+import { Mail, Linkedin, Facebook } from 'lucide-react'
 import Reveal from './Reveal'
 import { CONTACT } from '../data/contact'
 
@@ -33,13 +33,13 @@ export default function Contact() {
               LinkedIn
             </a>
             <a
-              href={CONTACT.github}
+              href={CONTACT.facebook}
               target="_blank"
               rel="noreferrer noopener"
               className="inline-flex items-center gap-2 rounded-[var(--radius-chip)] border border-slate-200 bg-surface px-6 py-3.5 text-[15px] font-semibold text-ink transition-colors hover:border-ink"
             >
-              <Github className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-              GitHub
+              <Facebook className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+              Facebook
             </a>
           </div>
         </Reveal>

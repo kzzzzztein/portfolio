@@ -28,10 +28,11 @@ export const projects = [
       'Responsive design for local and international guests',
     ],
     images: [
-      { src: 'resort-homepage.png', label: 'Homepage' },
-      { src: 'resort-rooms.png', label: 'Accommodation listings' },
+      { src: 'resort-homepage.jpg', label: 'Homepage' },
+      { src: 'resort-rooms.jpg', label: 'Gallery / accommodation photos' },
       { src: 'resort-booking.png', label: 'Reservation flow' },
       { src: 'resort-dashboard.png', label: 'Admin dashboard' },
+      { src: 'resort-about.jpg', label: 'About / Our Story' },
     ],
     outcome:
       'The platform gives the resort a working online reservation channel and a single dashboard to manage bookings, replacing a phone-and-paper process. No traffic or revenue figures are published here, since none have been provided for this project.',
@@ -59,9 +60,9 @@ export const projects = [
       'Responsive, customer-friendly interface',
     ],
     images: [
-      { src: 'travel-homepage.png', label: 'Homepage' },
-      { src: 'travel-destinations.png', label: 'Destination browsing' },
-      { src: 'travel-booking.png', label: 'Booking interface' },
+      { src: 'travel-homepage.jpg', label: 'Homepage' },
+      { src: 'travel-destinations.jpg', label: 'Destination browsing' },
+      { src: 'travel-booking.jpg', label: 'Booking interface' },
     ],
     outcome:
       'Delivered as a functioning front-to-back booking flow for a travel use case. No business or traffic results are published here, since none have been provided for this project.',
@@ -88,11 +89,13 @@ export const projects = [
       'PDF certificate generation',
       'Email notifications',
       'Administrative dashboard',
+      'RFP (Request for Payment) management module',
     ],
     images: [
       { src: 'maritime-dashboard.png', label: 'Training dashboard' },
       { src: 'maritime-monitoring.png', label: 'Expiration monitoring' },
       { src: 'maritime-certificate.png', label: 'Certificate generation' },
+      { src: 'maritime-rfp.png', label: 'RFP management system' },
     ],
     outcome:
       'Screenshots shown are generic or mocked to protect confidential company information. No revenue or business-impact figures are published here, since none have been provided for this project.',

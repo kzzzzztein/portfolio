@@ -1,12 +1,11 @@
-Drop your real project screenshots in this folder using these exact filenames
-(referenced from src/data/projects.js):
+Most project screenshots are filled in. Still pending:
 
-resort-homepage.png, resort-rooms.png, resort-booking.png, resort-dashboard.png
-travel-homepage.png, travel-destinations.png, travel-booking.png
-maritime-dashboard.png, maritime-monitoring.png, maritime-certificate.png
-sql-academy-home.png, sql-academy-lessons.png, sql-academy-exercises.png
+- resort-dashboard.png — admin/booking-management screen for the Resort
+  Booking Platform (referenced from src/data/projects.js)
+- sql-academy-exercises.png — interactive exercise screen for SQL Academy
 
-Until a file exists, the site shows a tasteful "Screenshot pending" placeholder
+Until these exist, the site shows a tasteful "Screenshot pending" placeholder
 instead of a broken image, so nothing breaks in the meantime.
 
-Recommended: 1600x1000px (16:10), PNG or JPG, under ~400KB each.
+Recommended: 1600px wide, JPG for photos / PNG for UI screenshots, under
+~400KB each.
