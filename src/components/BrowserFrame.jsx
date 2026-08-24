@@ -13,6 +13,12 @@ export default function BrowserFrame({ src, alt, label, className = '', tone = '
   const [failed, setFailed] = useState(false)
   const isDark = tone === 'dark'
 
+  // Resolve relative paths (e.g. "images/foo.jpg") against the site's base
+  // URL so they load correctly no matter how deep the current route is.
+  // Without this, a relative path on /portfolio/projects/some-slug would
+  // wrongly resolve against /portfolio/projects/ instead of /portfolio/.
+  const resolvedSrc = /^(https?:)?\//.test(src) ? src : `${import.meta.env.BASE_URL}${src}`
+
   return (
     <div
       className={`overflow-hidden rounded-[var(--radius-card)] border ${
@@ -42,7 +48,7 @@ export default function BrowserFrame({ src, alt, label, className = '', tone = '
       <div className="relative aspect-[16/10] w-full">
         {!failed && (
           <img
-            src={src}
+            src={resolvedSrc}
             alt={alt}
             loading="lazy"
             onError={() => setFailed(true)}

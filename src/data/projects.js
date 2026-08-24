@@ -36,7 +36,7 @@ export const projects = [
     ],
     outcome:
       'The platform gives the resort a working online reservation channel and a single dashboard to manage bookings, replacing a phone-and-paper process. No traffic or revenue figures are published here, since none have been provided for this project.',
-    liveUrl: '',
+    liveUrl: 'https://seacrewmanager-online-909156.hostingersite.com/index.php',
     repoUrl: '',
   },
   {
@@ -66,7 +66,7 @@ export const projects = [
     ],
     outcome:
       'Delivered as a functioning front-to-back booking flow for a travel use case. No business or traffic results are published here, since none have been provided for this project.',
-    liveUrl: '',
+    liveUrl: 'https://thelighthousetravelandtours.com/index.php',
     repoUrl: '',
   },
   {
@@ -130,7 +130,7 @@ export const projects = [
     ],
     outcome:
       'Demonstrates an interactive, education-focused web application distinct from the booking and dashboard-style projects above. No user or usage figures are published here, since none have been provided for this project.',
-    liveUrl: '',
+    liveUrl: 'https://seacrewmanager-online-909156.hostingersite.com/sql-academy-static/',
     repoUrl: '',
   },
 ]
