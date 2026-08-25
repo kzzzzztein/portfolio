@@ -151,9 +151,20 @@ homepage and its case-study page update automatically.
 - React 19 + Vite
 - Tailwind CSS v4
 - React Router (real URL paths, not hashes)
-- Motion (scroll-reveal animation, respects `prefers-reduced-motion`)
+- Motion (scroll/hover/magnetic animation, respects `prefers-reduced-motion`)
+- Lenis (smooth scroll, disabled under reduced motion)
 - lucide-react (icons)
-- Self-hosted Plus Jakarta Sans + JetBrains Mono (no external font requests)
+- Self-hosted Geist Sans, Geist Mono, and Fraunces (no external font requests)
+- Canvas-based animated backdrop (a dependency-free approximation of a WebGL
+  flow shader — see `src/components/layout/PageBackdrop.jsx`)
+- Dark mode via a custom `ThemeProvider` (`src/theme/ThemeProvider.jsx`),
+  persisted to `localStorage`, defaults to system preference
+
+## Pages
+
+- `/` — Home (hero, projects, what-I-build, process, contact)
+- `/about` — About (polaroid photos, bio, skills, education)
+- `/projects/:slug` — Case study per project
 
 ## Before sending this to a client
 

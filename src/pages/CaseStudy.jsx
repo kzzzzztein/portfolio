@@ -1,9 +1,11 @@
 import { useEffect } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { ArrowLeft, ExternalLink, Github } from 'lucide-react'
-import BrowserFrame from '../components/BrowserFrame'
-import Reveal from '../components/Reveal'
+import { FadeIn } from '../components/ui/motion-primitives'
 import { getProjectBySlug, projects } from '../data/projects'
+
+const border = { borderColor: 'var(--color-border)' }
+const muted = { color: 'var(--color-muted-fg)' }
 
 export default function CaseStudy() {
   const { slug } = useParams()
@@ -16,28 +18,30 @@ export default function CaseStudy() {
   if (!project) return <Navigate to="/" replace />
 
   const more = projects.filter((p) => p.slug !== project.slug).slice(0, 2)
+  const base = import.meta.env.BASE_URL
 
   return (
-    <article className="section-pad">
+    <article className="pb-16 pt-32 md:pb-24 md:pt-40">
       <div className="container-page">
         <Link
           to="/#work"
-          className="inline-flex items-center gap-1.5 text-[14px] font-semibold text-slate transition-colors hover:text-ink"
+          className="inline-flex items-center gap-1.5 text-[13.5px] font-medium transition-opacity hover:opacity-70"
+          style={muted}
         >
-          <ArrowLeft className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+          <ArrowLeft className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
           Back to Projects
         </Link>
 
-        <Reveal className="mt-8 max-w-2xl">
+        <FadeIn className="mt-8 max-w-2xl">
           {project.featured && (
-            <span className="chip-label inline-flex items-center gap-1.5 rounded-full bg-signal-tint px-3 py-1.5 text-signal-dim">
+            <span className="chip-label inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5" style={{ ...border, ...muted }}>
               Featured project
             </span>
           )}
-          <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">
-            {project.title}
-          </h1>
-          <p className="mt-3 text-lg text-slate">{project.subtitle}</p>
+          <h1 className="mt-4 font-display text-4xl md:text-5xl">{project.title}</h1>
+          <p className="mt-3 text-lg" style={muted}>
+            {project.subtitle}
+          </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
             {project.liveUrl ? (
@@ -45,13 +49,14 @@ export default function CaseStudy() {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-flex items-center gap-2 rounded-[var(--radius-chip)] bg-ink px-5 py-3 text-[14px] font-semibold text-paper"
+                className="inline-flex items-center gap-2 rounded-[var(--radius-chip)] px-5 py-3 text-[14px] font-semibold"
+                style={{ backgroundColor: 'var(--color-fg)', color: 'var(--color-bg)' }}
               >
                 <ExternalLink className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
                 Live Demo
               </a>
             ) : (
-              <span className="chip-label inline-flex items-center rounded-[var(--radius-chip)] border border-slate-200 px-5 py-3 text-slate">
+              <span className="chip-label inline-flex items-center rounded-[var(--radius-chip)] border px-5 py-3" style={{ ...border, ...muted }}>
                 Live demo link coming soon
               </span>
             )}
@@ -60,95 +65,106 @@ export default function CaseStudy() {
                 href={project.repoUrl}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="inline-flex items-center gap-2 rounded-[var(--radius-chip)] border border-slate-200 px-5 py-3 text-[14px] font-semibold text-ink hover:border-ink"
+                className="inline-flex items-center gap-2 rounded-[var(--radius-chip)] border px-5 py-3 text-[14px] font-semibold"
+                style={border}
               >
                 <Github className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
                 View Code
               </a>
             )}
           </div>
-        </Reveal>
+        </FadeIn>
 
         {/* Screenshots */}
-        <Reveal delay={0.05} className="mt-12 grid gap-5 sm:grid-cols-2">
+        <FadeIn delay={0.05} className="mt-12 grid gap-5 sm:grid-cols-2">
           {project.images.map((img) => (
-            <BrowserFrame key={img.src} src={`images/${img.src}`} alt={img.label} label={img.label} />
+            <div
+              key={img.src}
+              className="overflow-hidden rounded-[var(--radius-card)] border"
+              style={{ ...border, backgroundColor: 'var(--color-muted)' }}
+            >
+              <img
+                src={`${base}images/${img.src}`}
+                alt={img.label}
+                loading="lazy"
+                className="aspect-[16/10] w-full object-cover object-top"
+              />
+            </div>
           ))}
-        </Reveal>
+        </FadeIn>
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
           <div className="space-y-10">
-            <Reveal>
-              <h2 className="font-display text-xl font-bold text-ink">Overview</h2>
-              <p className="mt-3 max-w-[56ch] text-[15px] leading-relaxed text-slate">
+            <FadeIn>
+              <h2 className="font-display text-xl">Overview</h2>
+              <p className="mt-3 max-w-[56ch] text-[15px] leading-relaxed" style={muted}>
                 {project.description}
               </p>
-            </Reveal>
-
-            <Reveal delay={0.05}>
-              <h2 className="font-display text-xl font-bold text-ink">Problem</h2>
-              <p className="mt-3 max-w-[56ch] text-[15px] leading-relaxed text-slate">
+            </FadeIn>
+            <FadeIn delay={0.05}>
+              <h2 className="font-display text-xl">Problem</h2>
+              <p className="mt-3 max-w-[56ch] text-[15px] leading-relaxed" style={muted}>
                 {project.problem}
               </p>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <h2 className="font-display text-xl font-bold text-ink">Solution</h2>
-              <p className="mt-3 max-w-[56ch] text-[15px] leading-relaxed text-slate">
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <h2 className="font-display text-xl">Solution</h2>
+              <p className="mt-3 max-w-[56ch] text-[15px] leading-relaxed" style={muted}>
                 {project.solution}
               </p>
-            </Reveal>
-
-            <Reveal delay={0.15}>
-              <h2 className="font-display text-xl font-bold text-ink">Outcome</h2>
-              <p className="mt-3 max-w-[56ch] text-[15px] leading-relaxed text-slate">
+            </FadeIn>
+            <FadeIn delay={0.15}>
+              <h2 className="font-display text-xl">Outcome</h2>
+              <p className="mt-3 max-w-[56ch] text-[15px] leading-relaxed" style={muted}>
                 {project.outcome}
               </p>
-            </Reveal>
+            </FadeIn>
           </div>
 
           <div className="space-y-10">
-            <Reveal delay={0.05}>
-              <h2 className="font-display text-xl font-bold text-ink">Features</h2>
+            <FadeIn delay={0.05}>
+              <h2 className="font-display text-xl">Features</h2>
               <ul className="mt-4 grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2">
                 {project.features.map((f) => (
-                  <li key={f} className="border-t border-slate-200 pt-3 text-[14px] text-ink">
+                  <li key={f} className="border-t pt-3 text-[14px]" style={border}>
                     {f}
                   </li>
                 ))}
               </ul>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <h2 className="font-display text-xl font-bold text-ink">Technology</h2>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <h2 className="font-display text-xl">Technology</h2>
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="chip-label rounded-full border border-slate-200 px-3 py-1.5 text-slate"
-                  >
+                  <span key={t} className="chip-label rounded-full border px-3 py-1.5" style={{ ...border, ...muted }}>
                     {t}
                   </span>
                 ))}
               </div>
-            </Reveal>
+            </FadeIn>
           </div>
         </div>
 
         {/* More projects */}
-        <div className="mt-20 border-t border-slate-200 pt-10">
-          <h2 className="font-display text-lg font-bold text-ink">More projects</h2>
+        <div className="mt-20 border-t pt-10" style={border}>
+          <h2 className="font-display text-lg">More projects</h2>
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             {more.map((p) => (
               <Link
                 key={p.slug}
                 to={`/projects/${p.slug}`}
-                className="group rounded-[var(--radius-card)] border border-slate-200 p-5 transition-colors hover:border-ink"
+                className="group overflow-hidden rounded-[var(--radius-card)] border transition-transform duration-300 hover:-translate-y-1"
+                style={border}
               >
-                <BrowserFrame src={`images/${p.images[0].src}`} alt={p.title} label={p.images[0].label} />
-                <h3 className="mt-4 font-display text-[15px] font-bold text-ink group-hover:text-signal">
-                  {p.title}
-                </h3>
+                <div className="overflow-hidden" style={{ backgroundColor: 'var(--color-muted)' }}>
+                  <img
+                    src={`${base}images/${p.images[0].src}`}
+                    alt={p.title}
+                    loading="lazy"
+                    className="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
+                </div>
+                <h3 className="p-5 font-display text-[15px]">{p.title}</h3>
               </Link>
             ))}
           </div>

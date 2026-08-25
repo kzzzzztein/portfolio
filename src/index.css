@@ -1,102 +1,114 @@
 @import "tailwindcss";
 
-/*
-  Self-hosted fonts (Latin subset only, from @fontsource) so the site
-  never depends on a runtime call to Google Fonts. Files live in
-  src/assets/fonts/ and are bundled + hashed by Vite like any other asset.
-*/
+/* Self-hosted fonts (Latin subset) bundled from src/assets/fonts/ so the
+   site never depends on a runtime call to Google Fonts. */
 @font-face {
-  font-family: "Plus Jakarta Sans";
+  font-family: "Geist Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./assets/fonts/geist-sans-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist Sans";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("./assets/fonts/plus-jakarta-sans-latin-500-normal.woff2") format("woff2");
+  src: url("./assets/fonts/geist-sans-latin-500-normal.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Plus Jakarta Sans";
+  font-family: "Geist Sans";
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("./assets/fonts/plus-jakarta-sans-latin-600-normal.woff2") format("woff2");
+  src: url("./assets/fonts/geist-sans-latin-600-normal.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Plus Jakarta Sans";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("./assets/fonts/plus-jakarta-sans-latin-700-normal.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Plus Jakarta Sans";
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: url("./assets/fonts/plus-jakarta-sans-latin-800-normal.woff2") format("woff2");
-}
-@font-face {
-  font-family: "JetBrains Mono";
+  font-family: "Geist Mono";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("./assets/fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2");
+  src: url("./assets/fonts/geist-mono-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("./assets/fonts/fraunces-latin-300-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./assets/fonts/fraunces-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fraunces";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./assets/fonts/fraunces-latin-500-italic.woff2") format("woff2");
 }
 
 @theme {
-  --color-paper: #f6f5f1;
-  --color-surface: #ffffff;
-  --color-ink: #10161c;
-  --color-ink-soft: #1b232b;
-  --color-slate: #5b6470;
-  --color-slate-200: #dfe2e2;
-  --color-slate-800: #2b333b;
-  --color-signal: #0f7a6b;
-  --color-signal-dim: #0c5f54;
-  --color-signal-tint: #e4f0ed;
+  /* Strict black & white system. No accent hues. */
+  --color-bg: #ffffff;
+  --color-fg: #0a0a0a;
+  --color-muted: #f2f2f0;
+  --color-muted-fg: #6b6b68;
+  --color-border: #e4e4e1;
 
-  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --font-serif: "Fraunces", ui-serif, Georgia, serif;
 
-  --radius-card: 14px;
+  --radius-card: 20px;
   --radius-chip: 999px;
 }
 
+html.dark {
+  --color-bg: #0a0a0a;
+  --color-fg: #f5f5f4;
+  --color-muted: #151513;
+  --color-muted-fg: #8f8f8a;
+  --color-border: #232320;
+}
+
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto; /* Lenis owns smooth scroll */
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
   }
 }
 
 body {
-  background-color: var(--color-paper);
-  color: var(--color-ink);
-  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 ::selection {
-  background-color: var(--color-signal);
-  color: #fff;
+  background-color: var(--color-fg);
+  color: var(--color-bg);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-signal);
-  outline-offset: 2px;
+  outline: 2px solid var(--color-fg);
+  outline-offset: 3px;
   border-radius: 4px;
 }
 
 .container-page {
-  max-width: 1240px;
+  max-width: 1180px;
   margin-inline: auto;
   padding-inline: 1.25rem;
 }
@@ -108,13 +120,17 @@ body {
 }
 
 .section-pad {
-  padding-block: 5rem;
+  padding-block: 5.5rem;
 }
 
 @media (min-width: 1024px) {
   .section-pad {
-    padding-block: 7rem;
+    padding-block: 8rem;
   }
+}
+
+.font-display {
+  font-family: var(--font-serif);
 }
 
 .chip-label {
@@ -122,4 +138,47 @@ body {
   font-size: 0.7rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+/* Site frame: fixed rails, desktop only, signature framing device */
+.site-frame-rail-l,
+.site-frame-rail-r,
+.site-frame-rail-t {
+  pointer-events: none;
+  position: fixed;
+  background: var(--color-bg);
+  z-index: 41;
+  display: none;
+}
+
+@media (min-width: 850px) {
+  .site-frame-rail-l,
+  .site-frame-rail-r,
+  .site-frame-rail-t {
+    display: block;
+  }
+  .site-frame-rail-l {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 14px;
+  }
+  .site-frame-rail-r {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 14px;
+  }
+  .site-frame-rail-t {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 14px;
+  }
+}
+
+/* Dotted texture, used sparingly behind portrait/polaroid elements */
+.dotted-pattern {
+  background-image: radial-gradient(circle, var(--color-border) 1px, transparent 1px);
+  background-size: 14px 14px;
 }

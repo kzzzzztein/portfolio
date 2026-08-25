@@ -1,21 +1,17 @@
-import Hero from '../components/Hero'
-import Capabilities from '../components/Capabilities'
-import FeaturedProjects from '../components/FeaturedProjects'
-import Services from '../components/Services'
-import About from '../components/About'
-import Process from '../components/Process'
-import Contact from '../components/Contact'
+import Hero from '../components/hero/Hero'
+import ProjectsGrid from '../components/projects/ProjectsGrid'
+import WhatIBuild from '../components/home/WhatIBuild'
+import Process from '../components/home/Process'
+import ContactCard from '../components/contact/ContactCard'
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <Capabilities />
-      <FeaturedProjects />
-      <Services />
-      <About />
+      <ProjectsGrid />
+      <WhatIBuild />
       <Process />
-      <Contact />
+      <ContactCard />
     </>
   )
 }
